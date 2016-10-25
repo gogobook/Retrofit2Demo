@@ -1,18 +1,18 @@
 # Retrofit2Demo
 
-关于Retrofit2的使用教程见我的博客 [《你真的会用Retrofit2吗?Retrofit2完全教程》](http://www.jianshu.com/p/308f3c54abdd)
+關於Retrofit2的使用教程見我的博客 [《你真的會用Retrofit2嗎?Retrofit2完全教程》](http://www.jianshu.com/p/308f3c54abdd)
 
-Retrofit2 源码位置 [`client/src/main/java/com/github/ikidou/`](https://github.com/ikidou/Retrofit2Demo/tree/master/client/src/main/java/com/github/ikidou)
+Retrofit2 源碼位置 [`client/src/main/java/com/github/ikidou/`](https://github.com/ikidou/Retrofit2Demo/tree/master/client/src/main/java/com/github/ikidou)
 
-Android Studio 用户需要注意：
+Android Studio 用戶需要注意：
 
-该项目中没有的配置文件，也不是Android项目，所以打开后**可能会报错**，请按下面的步骤解决：
+該項目中沒有的配置文件，也不是Android項目，所以打開後**可能會報錯**，請按下面的步驟解決：
 
-1. **File -> Project Structure (Ctrl+Alt+Shift+S)**,并保证配置符合下图的要求后保存。  
-![项目设置1](jdk_setting.png)
+1. **File -> Project Structure (Ctrl+Alt+Shift+S)**,並保證配置符合下圖的要求後保存。  
+![項目設置1](jdk_setting.png)
 
-2. 打开右侧的Gradle面板，刷新项目依赖。  
-![项目设置2](gradle_setting.png)
+2. 打開右側的Gradle面板，刷新項目依賴。  
+![項目設置2](gradle_setting.png)
 
 License
 -------
