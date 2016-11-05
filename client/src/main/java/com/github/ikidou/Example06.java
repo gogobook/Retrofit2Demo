@@ -30,13 +30,13 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 
 /**
- * [Retrofit Converter 反序化]源码
+ * [Retrofit Converter 反序化]源碼
  */
 public class Example06 {
     public interface BlogService {
         @GET("blog/{id}")
-            //这里的{id} 表示是一个变量
-        Call<Result<Blog>> getFirstBlog(/** 这里的id表示的是上面的{id} */@Path("id") int id);
+            //這裡的{id} 表示是一個變量
+        Call<Result<Blog>> getFirstBlog(/** 這裡的id表示的是上面的{id} */@Path("id") int id);
     }
 
     public static void main(String[] args) {
@@ -47,7 +47,7 @@ public class Example06 {
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://localhost:4567/")
-                //可以接收自定义的Gson，当然也可以不传
+                //可以接收自定義的Gson，當然也可以不傳
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
@@ -57,7 +57,7 @@ public class Example06 {
         call.enqueue(new Callback<Result<Blog>>() {
             @Override
             public void onResponse(Call<Result<Blog>> call, Response<Result<Blog>> response) {
-                // 已经转换为想要的类型了
+                // 已經轉換為想要的類型了
                 Result<Blog> result = response.body();
                 System.out.println(result);
             }

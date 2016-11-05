@@ -23,7 +23,7 @@ import retrofit2.Call;
 
 public class ResponseBodyPrinter {
     /**
-     * 为了方保证执行的顺序，所以方法是同步的
+     * 為了方保證執行的順序，所以方法是同步的
      */
     public static void printResponseBody(Call<ResponseBody> call) {
         try {

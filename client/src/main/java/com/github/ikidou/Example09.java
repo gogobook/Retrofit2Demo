@@ -31,18 +31,18 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 
 /**
- * [Retrofit 自定义Converter]源码
+ * [Retrofit 自定義Converter]源碼
  */
 public class Example09 {
     public interface BlogService {
         @GET("blog/{id}")
-            //这里的{id} 表示是一个变量
-        Call<String> getFirstBlog(/** 这里的id表示的是上面的{id} */@Path("id") int id);
+            //這裡的{id} 表示是一個變量
+        Call<String> getFirstBlog(/** 這裡的id表示的是上面的{id} */@Path("id") int id);
     }
 
 
     /**
-     * 自定义Converter实现RequestBody到String的转换
+     * 自定義Converter實現RequestBody到String的轉換
      */
     public static class StringConverter implements Converter<ResponseBody, String> {
 
@@ -55,7 +55,7 @@ public class Example09 {
     }
 
     /**
-     * 用于向Retrofit提供StringConverter
+     * 用於向Retrofit提供StringConverter
      */
     public static class StringConverterFactory extends Converter.Factory {
 
@@ -65,13 +65,13 @@ public class Example09 {
             return INSTANCE;
         }
 
-        // 我们只关实现从ResponseBody 到 String 的转换，所以其它方法可不覆盖
+        // 我們只關實現從ResponseBody 到 String 的轉換，所以其它方法可不覆蓋
         @Override
         public Converter<ResponseBody, ?> responseBodyConverter(Type type, Annotation[] annotations, Retrofit retrofit) {
             if (type == String.class) {
                 return StringConverter.INSTANCE;
             }
-            //其它类型我们不处理，返回null就行
+            //其它類型我們不處理，返回null就行
             return null;
         }
     }
@@ -79,7 +79,7 @@ public class Example09 {
     public static void main(String[] args) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://localhost:4567/")
-                // 如是有Gson这类的Converter 一定要放在其它前面
+                // 如是有Gson這類的Converter 一定要放在其它前面
                 .addConverterFactory(StringConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();

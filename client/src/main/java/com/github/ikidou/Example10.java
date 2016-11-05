@@ -29,13 +29,13 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 
 /**
- * [Retrofit 自定义Converter]源码
+ * [Retrofit 自定義Converter]源碼
  */
 public class Example10 {
     public interface BlogService {
         @GET("blog/{id}")
-            //这里的{id} 表示是一个变量
-        CustomCall<String> getFirstBlog(/** 这里的id表示的是上面的{id} */@Path("id") int id);
+            //這裡的{id} 表示是一個變量
+        CustomCall<String> getFirstBlog(/** 這裡的id表示的是上面的{id} */@Path("id") int id);
     }
 
     public static class CustomCall<R> {
@@ -46,7 +46,7 @@ public class Example10 {
             this.call = call;
         }
 
-        // 提供一个同步获取数据的方法
+        // 提供一個同步獲取數據的方法
         public R get() throws IOException {
             return call.execute().body();
         }
@@ -56,7 +56,7 @@ public class Example10 {
 
         private final Type responseType;
 
-        // 下面的 responseType 方法需要数据的类型
+        // 下面的 responseType 方法需要數據的類型
         CustomCallAdapter(Type responseType) {
             this.responseType = responseType;
         }
@@ -68,7 +68,7 @@ public class Example10 {
 
         @Override
         public <R> CustomCall<R> adapt(Call<R> call) {
-            // 由 CustomCall 决定如何使用
+            // 由 CustomCall 決定如何使用
             return new CustomCall<>(call);
         }
     }
@@ -78,9 +78,9 @@ public class Example10 {
 
         @Override
         public CallAdapter<?> get(Type returnType, Annotation[] annotations, Retrofit retrofit) {
-            // 获取原始类型
+            // 獲取原始類型
             Class<?> rawType = getRawType(returnType);
-            // 返回值必须是CustomCall并且带有泛型
+            // 返回值必須是CustomCall並且帶有泛型
             if (rawType == CustomCall.class && returnType instanceof ParameterizedType) {
                 Type callReturnType = getParameterUpperBound(0, (ParameterizedType) returnType);
                 return new CustomCallAdapter(callReturnType);

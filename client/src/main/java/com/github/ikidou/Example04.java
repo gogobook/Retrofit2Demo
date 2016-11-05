@@ -22,10 +22,9 @@ import retrofit2.Retrofit;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
-import retrofit2.http.Query;
 
 /**
- * [Retrofit注解详解 之 FormUrlEncoded/Field/FieldMap注解]源码
+ * [Retrofit註解詳解 之 FormUrlEncoded/Field/FieldMap註解]源碼
  */
 public class Example04 {
     public interface BlogService {

@@ -24,18 +24,18 @@ import retrofit2.http.Query;
 import retrofit2.http.Url;
 
 /**
- * [Retrofit注解详解 之 FormUrlEncoded/Field/FieldMap注解]源码
+ * [Retrofit註解詳解 之 FormUrlEncoded/Field/FieldMap註解]源碼
  */
 public class Example05 {
     public interface BlogService {
         /**
-         * 当GET、POST...HTTP等方法中没有设置Url时，则必须使用 {@link Url}提供
-         * 对于Query和QueryMap，如果不是String（或Map的第个泛型参数不是String）时
-         * 会被调用toString
-         * Url支持的类型有 okhttp3.HttpUrl, String, java.net.URI, android.net.Uri
-         * {@link retrofit2.http.QueryMap} 用法和{@link retrofit2.http.FieldMap} 用法一样，不再说明
+         * 當GET、POST...HTTP等方法中沒有設置Url時，則必須使用 {@link Url}提供
+         * 對於Query和QueryMap，如果不是String（或Map的第個泛型參數不是String）時
+         * 會被調用toString
+         * Url支持的類型有 okhttp3.HttpUrl, String, java.net.URI, android.net.Uri
+         * {@link retrofit2.http.QueryMap} 用法和{@link retrofit2.http.FieldMap} 用法一樣，不再說明
          */
-        @GET //当有URL注解时，这里的URL就省略了
+        @GET //當有URL註解時，這裡的URL就省略了
         Call<ResponseBody> testUrlAndQuery(@Url String url, @Query("showAll") boolean showAll);
 
     }

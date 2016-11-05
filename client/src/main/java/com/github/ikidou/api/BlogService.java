@@ -21,6 +21,8 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 
+
+//這個api，好像沒被使用到，我想放在這裡主要是作為一種展示， interface要放在api內。
 public interface BlogService {
     @GET("blog/{id}")
     Call<ResponseBody> getFirstBlog(@Path("id") int id);

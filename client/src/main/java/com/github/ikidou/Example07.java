@@ -30,7 +30,7 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 /**
- * [Retrofit Converter 序列化]源码
+ * [Retrofit Converter 序列化]源碼
  */
 public class Example07 {
     public interface BlogService {
@@ -46,7 +46,7 @@ public class Example07 {
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://localhost:4567/")
-                //可以接收自定义的Gson，当然也可以不传
+                //可以接收自定義的Gson，當然也可以不傳
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
@@ -54,13 +54,13 @@ public class Example07 {
         BlogService service = retrofit.create(BlogService.class);
         Blog blog = new Blog();
         blog.content = "新建的Blog";
-        blog.title = "测试";
-        blog.author = "怪盗kidou";
+        blog.title = "測試";
+        blog.author = "怪盜kidou";
         Call<Result<Blog>> call = service.createBlog(blog);
         call.enqueue(new Callback<Result<Blog>>() {
             @Override
             public void onResponse(Call<Result<Blog>> call, Response<Result<Blog>> response) {
-                // 已经转换为想要的类型了
+                // 已經轉換為想要的類型了
                 Result<Blog> result = response.body();
                 System.out.println(result);
             }

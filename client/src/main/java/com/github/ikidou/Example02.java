@@ -23,14 +23,14 @@ import retrofit2.http.HTTP;
 import retrofit2.http.Path;
 
 /**
- * [Retrofit注解详解 之 HTTP注解]源码
+ * [Retrofit註解詳解 之 HTTP註解]源碼
  */
 public class Example02 {
     public interface BlogService {
         /**
-         * method 表示请的方法，不区分大小写
-         * path表示路径
-         * hasBody表示是否有请求体
+         * method 表示請的方法，不區分大小寫
+         * path表示路徑
+         * hasBody表示是否有請求體
          */
         @HTTP(method = "get", path = "blog/{id}", hasBody = false)
         Call<ResponseBody> getFirstBlog(@Path("id") int id);

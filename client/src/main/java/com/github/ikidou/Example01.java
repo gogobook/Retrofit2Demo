@@ -27,12 +27,12 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 
 /**
- * [Retrofit入门]源码
+ * [Retrofit入門]源碼
  */
 public class Example01 {
     public interface BlogService {
-        @GET("blog/{id}") //这里的{id} 表示是一个变量
-        Call<ResponseBody> getFirstBlog(/** 这里的id表示的是上面的{id} */@Path("id") int id);
+        @GET("blog/{id}") //這裡的{id} 表示是一個變量
+        Call<ResponseBody> getFirstBlog(/** 這裡的id表示的是上面的{id} */@Path("id") int id);
     }
 
     public static void main(String[] args) {
@@ -41,9 +41,9 @@ public class Example01 {
                 .build();
 
         BlogService service = retrofit.create(BlogService.class);
-        Call<ResponseBody> call = service.getFirstBlog(3);
-        // 用法和OkHttp的call如出一辙
-        // 不同的是如果是Android系统回调方法执行在主线程
+        Call<ResponseBody> call = service.getFirstBlog(2);
+        // 用法和OkHttp的call如出一轍
+        // 不同的是如果是Android系統回調方法執行在主線程
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {

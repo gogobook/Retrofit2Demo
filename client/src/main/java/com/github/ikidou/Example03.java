@@ -35,21 +35,21 @@ import retrofit2.http.Part;
 import retrofit2.http.PartMap;
 
 /**
- * [Retrofit注解详解 之 FormUrlEncoded/Field/FieldMap/Multipart/Part/PartMap注解]源码
+ * [Retrofit註解詳解 之 FormUrlEncoded/Field/FieldMap/Multipart/Part/PartMap註解]源碼
  */
 public class Example03 {
     public interface BlogService {
 
         /**
-         * {@link FormUrlEncoded} 表明是一个表单格式的请求（Content-Type:application/x-www-form-urlencoded）
-         * <code>Field("username")</code> 表示将后面的 <code>String name</code> 中name的取值作为 username 的值
+         * {@link FormUrlEncoded} 表明是一個表單格式的請求（Content-Type:application/x-www-form-urlencoded）
+         * <code>Field("username")</code> 表示將後面的 <code>String name</code> 中name的取值作為 username 的值
          */
         @POST("/form")
         @FormUrlEncoded
         Call<ResponseBody> testFormUrlEncoded1(@Field("username") String name, @Field("age") int age);
 
         /**
-         * Map的key作为表单的键
+         * Map的key作為表單的鍵
          */
         @POST("/form")
         @FormUrlEncoded
@@ -57,17 +57,17 @@ public class Example03 {
 
 
         /**
-         * {@link Part} 后面支持三种类型，{@link RequestBody}、{@link okhttp3.MultipartBody.Part} 、任意类型
-         * 除 {@link okhttp3.MultipartBody.Part} 以外，其它类型都必须带上表单字段({@link okhttp3.MultipartBody.Part} 中已经包含了表单字段的信息)，
+         * {@link Part} 後面支持三種類型，{@link RequestBody}、{@link okhttp3.MultipartBody.Part} 、任意類型
+         * 除 {@link okhttp3.MultipartBody.Part} 以外，其它類型都必須帶上表單字段({@link okhttp3.MultipartBody.Part} 中已經包含了表單字段的信息)，
          */
         @POST("/form")
         @Multipart
         Call<ResponseBody> testFileUpload1(@Part("name") RequestBody name, @Part("age") RequestBody age, @Part MultipartBody.Part file);
 
         /**
-         * PartMap 注解支持一个Map作为参数，支持 {@link RequestBody } 类型，
-         * 如果有其它的类型，会被{@link retrofit2.Converter}转换，如后面会介绍的 使用{@link com.google.gson.Gson} 的 {@link retrofit2.converter.gson.GsonRequestBodyConverter}
-         * 所以{@link MultipartBody.Part} 就不适用了,所以文件只能用<b> @Part MultipartBody.Part </b>
+         * PartMap 註解支持一個Map作為參數，支持 {@link RequestBody } 類型，
+         * 如果有其它的類型，會被{@link retrofit2.Converter}轉換，如後面會介紹的 使用{@link com.google.gson.Gson} 的 {@link retrofit2.converter.gson.GsonRequestBodyConverter}
+         * 所以{@link MultipartBody.Part} 就不適用了,所以文件只能用<b> @Part MultipartBody.Part </b>
          */
         @POST("/form")
         @Multipart
@@ -84,16 +84,16 @@ public class Example03 {
 
 
         // 演示 @FormUrlEncoded 和 @Field
-        Call<ResponseBody> call1 = service.testFormUrlEncoded1("怪盗kidou", 24);
+        Call<ResponseBody> call1 = service.testFormUrlEncoded1("怪盜kidou", 24);
         ResponseBodyPrinter.printResponseBody(call1);
 
 
         //===================================================
 
         // 演示 @FormUrlEncoded 和 @FieldMap
-        // 实现的效果与上面想同
+        // 實現的效果與上面想同
         Map<String, Object> map = new HashMap<>();
-        map.put("username", "怪盗kidou");
+        map.put("username", "怪盜kidou");
         map.put("age", 24);
         Call<ResponseBody> call2 = service.testFormUrlEncoded2(map);
         ResponseBodyPrinter.printResponseBody(call2);
@@ -103,9 +103,9 @@ public class Example03 {
 
 
         MediaType textType = MediaType.parse("text/plain");
-        RequestBody name = RequestBody.create(textType, "怪盗kidou");
+        RequestBody name = RequestBody.create(textType, "怪盜kidou");
         RequestBody age = RequestBody.create(textType, "24");
-        RequestBody file = RequestBody.create(MediaType.parse("application/octet-stream"), "这里是模拟文件的内容");
+        RequestBody file = RequestBody.create(MediaType.parse("application/octet-stream"), "這裡是模擬文件的內容");
 
         // 演示 @Multipart 和 @Part
         MultipartBody.Part filePart = MultipartBody.Part.createFormData("file", "test.txt", file);
@@ -114,13 +114,13 @@ public class Example03 {
 
         //===================================================
         // 演示 @Multipart 和 @PartMap
-        // 实现和上面同样的效果
+        // 實現和上面同樣的效果
         Map<String, RequestBody> fileUpload2Args = new HashMap<>();
         fileUpload2Args.put("name", name);
         fileUpload2Args.put("age", age);
-        //这里并不会被当成文件，因为没有文件名(包含在Content-Disposition请求头中)，但上面的 filePart 有
+        //這裡並不會被當成文件，因為沒有文件名(包含在Content-Disposition請求頭中)，但上面的 filePart 有
         //fileUpload2Args.put("file", file);
-        Call<ResponseBody> call4 = service.testFileUpload2(fileUpload2Args, filePart); //单独处理文件
+        Call<ResponseBody> call4 = service.testFileUpload2(fileUpload2Args, filePart); //單獨處理文件
         ResponseBodyPrinter.printResponseBody(call4);
     }
 }

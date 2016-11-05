@@ -23,7 +23,6 @@ import com.google.gson.GsonBuilder;
 
 import java.util.List;
 
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -34,14 +33,14 @@ import rx.Subscriber;
 import rx.schedulers.Schedulers;
 
 /**
- * [Retrofit Converter 序列化]源码
+ * [Retrofit Converter 序列化]源碼
  */
 public class Example08 {
     public interface BlogService {
         @GET("/blog")
         Observable<Result<List<Blog>>> getBlogs(@Query("page") int page);
         /*
-          「20160608补充」如果需要Header的值，可以把返回值替换为
+          「20160608補充」如果需要Header的值，可以把返回值替換為
             Observable<Response<Result<List<Blog>>>>
             Observable<retrofit2.adapter.rxjava.Result<Result<List<Blog>>>> //都叫Result，真是失策
          */
@@ -78,7 +77,7 @@ public class Example08 {
                         System.out.println(blogsResult);
                     }
                 });
-        // 顺便说一句：不要为了使用RxJava而使用RxJava，把它用在该用它的地方。
+        // 順便說一句：不要為了使用RxJava而使用RxJava，把它用在該用它的地方。
 
     }
 
